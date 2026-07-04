@@ -1,0 +1,314 @@
+:root {
+  --bg: #f4f6fb;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-strong: #ffffff;
+  --text: #162033;
+  --muted: #63708a;
+  --border: rgba(22, 32, 51, 0.08);
+  --accent: #4f7cff;
+  --accent-soft: rgba(79, 124, 255, 0.12);
+  --shadow: 0 20px 50px rgba(22, 32, 51, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(79, 124, 255, 0.14), transparent 28%),
+    linear-gradient(180deg, #f7f9fd 0%, var(--bg) 100%);
+}
+
+.app-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.hero-card,
+.weather-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero-card {
+  padding: 2rem;
+}
+
+.hero-copy {
+  margin-bottom: 2rem;
+}
+
+.eyebrow,
+.section-label,
+.field-hint,
+.metric-label,
+.condition-description,
+.hero-text,
+.empty-state p,
+.form-message {
+  color: var(--muted);
+}
+
+.eyebrow,
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.95;
+}
+
+.hero-text {
+  margin-top: 1rem;
+  max-width: 34rem;
+  line-height: 1.7;
+}
+
+.weather-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.95rem 1rem;
+  font: inherit;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.field-hint,
+.form-message {
+  font-size: 0.88rem;
+}
+
+.primary-button {
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  padding: 1rem 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(79, 124, 255, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(79, 124, 255, 0.32);
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.form-message {
+  min-height: 1.25rem;
+}
+
+.form-message.error {
+  color: #c53d3d;
+}
+
+.form-message.success {
+  color: #2f7d4a;
+}
+
+.weather-panel {
+  min-height: 520px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: stretch;
+}
+
+.empty-state,
+.weather-card {
+  width: 100%;
+  min-height: 100%;
+  border-radius: calc(var(--radius-lg) - 8px);
+  background: var(--panel-strong);
+  border: 1px solid rgba(22, 32, 51, 0.05);
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.empty-icon {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.weather-card {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.weather-card-header,
+.temperature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weather-icon {
+  width: 92px;
+  height: 92px;
+}
+
+.temperature {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.condition {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.condition-description {
+  margin-top: 0.3rem;
+  text-transform: capitalize;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: #f8faff;
+  border: 1px solid rgba(79, 124, 255, 0.08);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.metric-card strong {
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 1rem 0 2rem;
+  }
+
+  .weather-panel {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(100% - 1rem, 1120px);
+    gap: 1rem;
+  }
+
+  .hero-card,
+  .weather-panel,
+  .weather-card,
+  .empty-state {
+    border-radius: 22px;
+  }
+
+  .hero-card,
+  .weather-panel,
+  .weather-card,
+  .empty-state {
+    padding: 1.2rem;
+  }
+
+  .field-row,
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-card-header,
+  .temperature-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .weather-icon {
+    width: 78px;
+    height: 78px;
+  }
+}

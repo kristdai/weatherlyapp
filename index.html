@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEATHERLY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card" aria-labelledby="app-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Current weather, simplified</p>
+        <h1 id="app-title">WEATHERLY</h1>
+        <p class="hero-text">
+          Look up live conditions for any city and country combination with a clean,
+          fast, static weather interface.
+        </p>
+      </div>
+
+      <form id="weather-form" class="weather-form" novalidate>
+        <div class="field-group">
+          <label for="apiKey">API Key</label>
+          <input id="apiKey" name="apiKey" type="password" placeholder="OpenWeatherMap API key" autocomplete="off">
+          <p class="field-hint">Entered locally in your browser only.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" placeholder="e.g. Melbourne" autocomplete="address-level2">
+          </div>
+
+          <div class="field-group">
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" placeholder="e.g. Australia" autocomplete="country-name">
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button">Get Weather</button>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="weather-panel" aria-live="polite" aria-atomic="true">
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon" aria-hidden="true">+</div>
+        <h2>Weather details will appear here</h2>
+        <p>Enter your API key, city, and country to load the current conditions.</p>
+      </div>
+
+      <article id="weather-card" class="weather-card hidden">
+        <header class="weather-card-header">
+          <div>
+            <p class="section-label">Live now</p>
+            <h2 id="location-name">-</h2>
+          </div>
+          <img id="weather-icon" class="weather-icon" src="" alt="">
+        </header>
+
+        <div class="temperature-row">
+          <p id="temperature" class="temperature">--</p>
+          <div>
+            <p id="condition" class="condition">-</p>
+            <p id="condition-description" class="condition-description">-</p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span class="metric-label">Humidity</span>
+            <strong id="humidity">--</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Wind</span>
+            <strong id="wind-speed">--</strong>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
